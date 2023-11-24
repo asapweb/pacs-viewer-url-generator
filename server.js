@@ -1,14 +1,15 @@
 const express = require('express');
 const { Pool } = require("pg");
+require('dotenv').config();
 
 const app = express();
 
 const pool = new Pool({
-    user: 'pacs',
-    host: '200.127.57.176',
-    database: 'pacsdb',
-    password: 'pacs',
-    port: 5432,
+    host: process.env.POSTGRES_HOST || '',
+    database: process.env.POSTGRES_DB || '',
+    user: process.env.POSTGRES_USER || '',
+    password: process.env.POSTGRES_USER || '',
+    port: 5432
 });
 
 function emptyOrRows(rows) {
@@ -40,7 +41,7 @@ app.get('/api/study/urlByAccessionNumber', async function(req, res, next) {
         if (r.data.rowCount) {
             data = {
                 success: true,
-                url: 'http://imagenes.hemodinamiadelsur.com:3000/viewer/' + r.data.rows[0].studyuid,
+                url: process.env.VIEWER_URL + r.data.rows[0].studyuid,
                 message: ''
             }
         } else {
@@ -60,5 +61,6 @@ app.get('/api/study/urlByAccessionNumber', async function(req, res, next) {
 // Start the server
 app.listen(3001, () => {
     console.log('Server is running on port 3001');
+    console.log(process.env.POSTGRES_HOST);
 });
 

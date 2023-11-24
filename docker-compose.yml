@@ -7,3 +7,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "3001:3001"
+    environment:
+      POSTGRES_HOST: 200.127.57.176
+      POSTGRES_DB: pacsdb
+      POSTGRES_USER: pacs
+      POSTGRES_PASSWORD: pacs

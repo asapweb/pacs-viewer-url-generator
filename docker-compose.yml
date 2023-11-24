@@ -1,0 +1,9 @@
+version: '3'
+services:
+  node-pacs-viewer-url-generator:
+    container_name: pacs-viewer-url-generator
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"

@@ -1,1 +1,0 @@
-# hemosoft-pacs-viewer-url-generator

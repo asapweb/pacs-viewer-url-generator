@@ -11,6 +11,6 @@ RUN npm install pm2 -g
 #Copio todos los archivos de mi repositorio hacia WORKDIR
 COPY . .
 #Esta configuración hace que el puerto en donde voy a alojar mi aplicación pueda ser accedido
-EXPOSE 3000
+EXPOSE 3001
 #Por último configuro los comandos que se van a ejecutar para poner arriba nuesra app
 CMD ["pm2-runtime", "ecosystem.config.js", "--env", "production"]
